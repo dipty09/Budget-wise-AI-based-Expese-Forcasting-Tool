@@ -26,5 +26,5 @@ An AI-driven expense forecasting and budgeting system that predicts user spendin
 
 ## 🧰 Setup Instructions
 ```bash
-git clone https://github.com/dipty-mca/budget-wise-ai-based-forecasting-tool.git
+git clone https://github.com/dipty09/budget-wise-ai-based-forecasting-tool.git
 cd budget-wise-ai-based-forecasting-tool

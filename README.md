@@ -1,5 +1,4 @@
-# Budget-wise-AI-based-Expese-Forcasting-Tool
-It is a budget forcasting tool for my Virtual Internship
+# Budget-Wise AI-Based Forecasting Tool
 # Budget-Wise AI-Based Forecasting Tool
 
 An AI-driven expense forecasting and budgeting system that predicts user spending trends, identifies overspending risks, and provides actionable insights to improve financial management.

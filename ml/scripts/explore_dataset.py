@@ -1,20 +1,14 @@
+# explore_dataset.py
+
 import pandas as pd
-import matplotlib.pyplot as plt
 
 # Load the dataset
-df = pd.read_csv('ml/data/DatasetFinal.csv')
+file_path = "../data/DatasetFinalCSV.csv"
+df = pd.read_csv(file_path)
 
 # Basic info
-print("Data Info:")
-print(df.info())
-print("\nSample Data:")
-print(df.head())
-
-# Check for missing values
-print("\nMissing Values:")
-print(df.isnull().sum())
-
-# Category-wise spending
-category_expense = df.groupby('Category')['Amount'].sum()
-category_expense.plot(kind='bar', title='Total Expense by Category')
-plt.show()
+print("✅ Dataset loaded successfully!\n")
+print("📊 Shape:", df.shape)
+print("\n🔍 Columns:\n", df.columns.tolist())
+print("\n🧾 First 5 rows:\n", df.head())
+print("\n🧩 Missing values:\n", df.isnull().sum())

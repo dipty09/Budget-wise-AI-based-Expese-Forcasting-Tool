@@ -26,7 +26,7 @@ The project addresses key challenges:
 • Difficulty in future financial estimation.
 
 --------------------------------------------------
-
+MileStone-1
 *2. Technical Scope and Data Preparation*
 -------------------------------------------
 
@@ -46,7 +46,7 @@ Key features include Month, Weekday, Seasonality, Cumulative Spending Patterns, 
 Data synchronization with Google Sheets and real-time bank feed integration (future enhancement).
 
 --------------------------------------------------
-
+MileStone-2
 *3. AI/ML Modelling and Evaluation*
 -------------------------------------
 
@@ -71,7 +71,7 @@ RMSE (Root Mean Square Error) | Penalizes large deviations.
 MAPE (Mean Absolute Percentage Error) | Forecast accuracy in percentage terms.  
 
 --------------------------------------------------
-
+Milestone-3 And 4
 *4. Application and Deployment*
 ---------------------------------
 

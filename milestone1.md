@@ -10,7 +10,8 @@ Acquiring a real-world or realistic financial dataset.
 Cleaning and preprocessing the dataset to make it suitable for AI/ML modeling.
 
 Setting up the initial Streamlit frontend for visualizing expenses and trends.
-
+ 
+---
 ## 2. Dataset Details
 
 Source: Kaggle or other public financial datasets.
@@ -108,6 +109,8 @@ budget-wise-ai-based-expese-forcasting-tool/
 │
 ├── documentation.md
 └── requirements.txt
+
+---
 ## 6. Outcome of Milestone 1
 
 ✅ Acquired a real-world expense dataset.

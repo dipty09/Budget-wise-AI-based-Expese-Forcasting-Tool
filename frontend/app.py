@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-cleaned_csv_path = r"D:\Budget Expense_tool\budget-wise-ai-based-expese-forcasting-tool\ml\processed_data\budgetwise_finance_dataset_cleaned.csv"
+cleaned_csv_path = r"D:\Budget Expense_tool\budget-wise-ai-based-expese-forcasting-tool\ml\data\budgetwise_finance_dataset_cleaned.csv"
 
 df = pd.read_csv(cleaned_csv_path)
 df['date'] = pd.to_datetime(df['date'])

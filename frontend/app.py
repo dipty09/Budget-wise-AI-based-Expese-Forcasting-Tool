@@ -1,52 +1,45 @@
-# app.py
 import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import os
+import requests
 
-cleaned_csv_path = r"D:\Budget Expense_tool\budget-wise-ai-based-expese-forcasting-tool\ml\data\budgetwise_finance_dataset_cleaned.csv"
+API_URL = "http://127.0.0.1:5000"
 
-df = pd.read_csv(cleaned_csv_path)
-df['date'] = pd.to_datetime(df['date'])
-df['month'] = df['date'].dt.month
-df['year'] = df['date'].dt.year
+st.title("💰 BudgetWise AI-Based Expense Forecasting Tool")
+st.subheader("User Authentication & Transaction Input")
 
+menu = ["Register", "Login", "Add Transaction"]
+choice = st.sidebar.selectbox("Select Option", menu)
 
-st.set_page_config(page_title="BudgetWise Expense Dashboard", layout="wide")
-st.title("BudgetWise Expense Forecasting - Dashboard")
+if choice == "Register":
+    st.header("Register New User")
+    email = st.text_input("Email")
+    password = st.text_input("Password", type="password")
+    if st.button("Register"):
+        res = requests.post(f"{API_URL}/auth/register", json={"email": email, "password": password})
+        st.success(res.json().get("message", "Registered Successfully!"))
 
+elif choice == "Login":
+    st.header("User Login")
+    email = st.text_input("Email")
+    password = st.text_input("Password", type="password")
+    if st.button("Login"):
+        res = requests.post(f"{API_URL}/auth/login", json={"email": email, "password": password})
+        if res.status_code == 200:
+            st.session_state['token'] = res.json()['token']
+            st.success("Login Successful!")
+        else:
+            st.error(res.json().get('error', 'Login Failed'))
 
-years = df['year'].sort_values().unique()
-selected_year = st.sidebar.selectbox("Select Year", years)
-
-categories = df['category'].unique()
-selected_categories = st.sidebar.multiselect("Select Categories", categories, default=categories)
-
-# Filter data based on selections
-filtered_df = df[(df['year'] == selected_year) & (df['category'].isin(selected_categories))]
-
-
-st.subheader(f"Summary Statistics for {selected_year}")
-st.write(filtered_df.describe())
-
-
-st.subheader("Category-wise Total Spending")
-category_sum = filtered_df.groupby('category')['amount'].sum().sort_values(ascending=False)
-st.bar_chart(category_sum)
-
-
-st.subheader("Monthly Spending Trend")
-monthly_sum = filtered_df.groupby('month')['amount'].sum().sort_index()
-
-plt.figure(figsize=(10, 4))
-sns.lineplot(x=monthly_sum.index, y=monthly_sum.values, marker='o')
-plt.xticks(range(1, 13))
-plt.xlabel("Month")
-plt.ylabel("Total Amount")
-plt.title(f"Monthly Spending in {selected_year}")
-st.pyplot(plt)
-
-
-st.subheader("Raw Data")
-st.dataframe(filtered_df)
+elif choice == "Add Transaction":
+    st.header("Add Transaction")
+    if 'token' not in st.session_state:
+        st.warning("Please login first!")
+    else:
+        date = st.date_input("Date")
+        amount = st.number_input("Amount")
+        category = st.text_input("Category")
+        description = st.text_area("Description")
+        if st.button("Add Transaction"):
+            headers = {"Authorization": st.session_state['token']}
+            data = {"date": str(date), "amount": amount, "category": category, "description": description}
+            res = requests.post(f"{API_URL}/transaction/add", json=data, headers=headers)
+            st.success(res.json().get("message", "Transaction added successfully"))

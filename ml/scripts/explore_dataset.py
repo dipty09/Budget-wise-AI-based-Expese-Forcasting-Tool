@@ -20,7 +20,6 @@ df['amount'] = df['amount'].replace({',': '', '₹': '', '$': ''}, regex=True)
 df['amount'] = pd.to_numeric(df['amount'], errors='coerce')
 df = df.dropna(subset=['amount'])
 
-#
 df['date'] = pd.to_datetime(df['date'], errors='coerce')
 df = df.dropna(subset=['date'])
 
@@ -45,7 +44,7 @@ print("\nSample cleaned data:")
 print(df.head())
 
 
-output_folder = r"D:\Budget Expense_tool\budget-wise-ai-based-expese-forcasting-tool\ml\processed_data"
+output_folder = r"D:\Budget Expense_tool\budget-wise-ai-based-expese-forcasting-tool\ml\data"
 os.makedirs(output_folder, exist_ok=True)
 
 cleaned_csv_path = os.path.join(output_folder, "budgetwise_finance_dataset_cleaned.csv")

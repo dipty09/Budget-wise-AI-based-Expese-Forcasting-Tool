@@ -8,9 +8,9 @@ An AI-driven expense forecasting and budgeting system that predicts user spendin
 - Secure backend and user management
 
 ## 🧠 Tech Stack
-- **Frontend:** React / Bootstrap
+- **Frontend:** Streamlit/ Matplotlib / Seaborn
 - **Backend:** Flask / FastAPI (Python)
-- **Database:** MongoDB / PostgreSQL
+- **Database:** sqllite3
 - **Machine Learning:** Scikit-learn / TensorFlow
 
 ## 📁 Folder Structure

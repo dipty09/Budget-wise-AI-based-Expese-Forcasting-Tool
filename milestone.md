@@ -21,28 +21,28 @@ It is a Streamlit-based financial management system that enables users to record
  - User-Friendly Interface: An intuitive platform for inputting transactions, viewing reports, and interacting with forecasts.
 
  ## 3.**Module To be Implemented**  
- ## User Authentication and profile Management:
+ ### User Authentication and profile Management:
     
    - Basic user profile for managing financial data and preferences.
 
- ## Transaction Ingestion & Categorization Module:
+ ### Transaction Ingestion & Categorization Module:
 
    - Interface for users to manually input or upload simulated/dummy transaction data (ee.g., CSV).
 
    - Automated (or semi-automated, rule-based) categorization of transactions (e.g.. 'Groceries', 'Utilities', 'Transport').
 
- ## Data Analysis & Reporting Module:
+ ### Data Analysis & Reporting Module:
 
    - Calculate spending summaries per category, month, or custom period.
    - Generate reports on income vs. expenses.
 
-## Forecasting Module:
+### Forecasting Module:
 
    - Implement Prophet (Meta's forecasting library) to predict future expenses and income based on historical transaction patterns.
 
    - Allow users to define financial goals and forecast their achievement.
 
-## Visualization & Dashboard Module:
+### Visualization & Dashboard Module:
    - Interactive charts and graphs (using Matplotlib, Seaborn) to visualize spending
 
  ## 4.**Module Representation And Requirements With output ScreenShots:** 

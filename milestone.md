@@ -5,6 +5,7 @@
  ## 1.**Project Statement:**
 Many individuals struggle with managing their personal finances effectively, often finding it difficult to track spending, stick to a budget, and plan for future financial goals. The sheer volume of daily transactions can be overwhelming, making it hard to identify spending patterns or anticipate upcoming expenses. This lack of financial clarity can lead to stress, missed savings opportunities, and difficulty in achieving long-term financial stability. The "Personal Budgeting & Expense Forecaster" project aims to address these challenges by developing an intuitive tool that helps individuals gain control over their finances. By leveraging time-series forecasting on historical transaction data (using simulated or dummy data), the application will enable users to visualize spending patterns, set realistic financial goals, and forecast future expenses and savings, empowering them to make informed financial decisions.
 It is a Streamlit-based financial management system that enables users to record, categorize, and visualize their income and expenses. The application provides users with an intuitive dashboard for tracking financial activities through secure authentication, transaction management, and visual analytics.
+
 ---
  ## 2.**Outcomes:** 
 

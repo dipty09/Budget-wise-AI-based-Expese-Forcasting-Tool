@@ -25,16 +25,28 @@ def categorize_transaction(note, txn_type):
     text = preprocess_text(str(note)) + " " + str(txn_type).lower()
 
     categories = {
-        "Food & Dining": ["restaurant", "food", "lunch", "dinner", "meal", "pizza", "burger", "cafe"],
-        "Transportation": ["bus", "train", "uber", "ola", "fuel", "petrol", "diesel", "ticket"],
-        "Shopping": ["shopping", "mall", "clothes", "apparel", "store", "purchase"],
-        "Utilities": ["electricity", "water", "gas", "internet", "mobile", "recharge", "bill"],
-        "Health & Fitness": ["hospital", "medicine", "doctor", "gym", "pharmacy"],
-        "Entertainment": ["movie", "netflix", "amazon", "music", "game", "subscription"],
-        "Education": ["school", "college", "course", "exam", "fee", "book"],
-        "Salary / Income": ["salary", "income", "credit", "bonus", "deposit"],
-        "Others": []
-    }
+            
+    "Food & Dining": ["restaurant", "food", "lunch", "dinner", "meal", "pizza", "burger", "cafe","coffee","asdfgh"],
+    "Transportation": ["bus", "train", "uber", "ola", "fuel", "petrol", "diesel", "ticket"],
+    "Shopping": ["shopping", "mall", "clothes", "apparel", "store", "purchase"],
+    "Utilities": ["electricity", "water", "gas", "internet", "mobile", "recharge", "bill"],
+    "Health & Fitness": ["hospital", "medicine", "doctor", "gym", "pharmacy"],
+    "Entertainment": ["movie", "netflix", "amazon", "music", "game", "subscription"],
+    "Education": ["school", "college", "course", "exam", "fee", "book"],
+    "Salary / Income": ["salary", "income", "credit", "bonus", "deposit"],
+    "Travel": ["travel", "flight", "hotel", "train", "uber", "ola", "bus", "booking", "airport"],
+    "Rent & Housing": ["rent", "apartment", "lease", "tenant", "monthly rent"],
+    "Investments & Savings": ["investment", "fixed deposit", "mutual fund", "stock", "savings", "fd"],
+    "Loans & EMIs": ["emi", "loan", "installment", "credit payment", "debt"],
+    "Charity & Donations": ["donation", "charity", "ngo", "fundraising"],
+    "Personal Care": ["salon", "beauty", "spa", "makeup", "parlor"],
+    "Insurance": ["insurance", "premium", "policy", "claim"],
+    "Business & Freelance": ["freelance", "business", "consulting", "project", "contract"],
+    "Household & Groceries": ["grocery", "market", "supermarket", "essentials", "household"],
+    "Subscriptions & Services": ["spotify", "prime", "apple", "disney", "subscription", "membership"],
+    "Financial Fees": ["bank charge", "fee", "commission", "tax", "service charge"],
+    "Miscellaneous": ["misc", "test", "others", "xyz123"]
+ }
 
     for category, keywords in categories.items():
         if any(keyword in text for keyword in keywords):
@@ -76,7 +88,20 @@ if uploaded_file is not None:
         df[["date", "notes", "transaction_type", "amount", "auto_category"]],
         use_container_width=True
     )
+    # Identify income vs expense
+    df["type"] = df["auto_category"].apply(
+        lambda x: "Income" if "Income" in x or "Salary" in x else "Expense"
+    )
+    total_income = df.loc[df["type"] == "Income", "amount"].sum()
+    total_expense = df.loc[df["type"] == "Expense", "amount"].sum()
+    balance = total_income - total_expense
 
+    # ---------- Dashboard Metrics ----------
+    st.markdown("### 📈 Financial Summary")
+    col1, col2, col3 = st.columns(3)
+    col1.metric("💰 Total Income", f"₹{total_income:,.2f}")
+    col2.metric("💸 Total Expense", f"₹{total_expense:,.2f}")
+    col3.metric("🏦 Current Balance", f"₹{balance:,.2f}")
     # ---------- Pie chart visualization ----------
     st.subheader("📊 Expense Distribution by Category")
 

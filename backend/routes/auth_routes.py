@@ -2,7 +2,8 @@ import os
 import pytz
 from dotenv import load_dotenv
 from flask import Blueprint, request, jsonify
-import jwt, datetime, sqlite3
+import jwt,sqlite3
+from datetime import datetime,timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 
 auth_bp = Blueprint('auth', __name__)
@@ -22,9 +23,9 @@ def log_login_activity(email, user_id):
             login_time TEXT
         )
     """)
-    IST=pytz.timezone("Asia/Kolkata")
+    login_time=datetime.utcnow().strftime("%Y-%m-%d %H-%m-%S ")
     cursor.execute("INSERT INTO login_activity (user_id, email, login_time) VALUES (?, ?, ?)",
-                   (user_id, email, datetime.now(IST).strftime("%Y-%m-%d %H-%m-%S ")))
+                   (user_id, email, login_time))
     conn.commit()
     conn.close()
 
@@ -83,7 +84,7 @@ def login():
         # ✅ Log login to admin.db (This is the key correction)
         log_login_activity(email, user[0])
         token = jwt.encode(
-            {'user_id': user[0], 'exp': datetime.now() + datetime.timedelta(hours=1)},
+            {'user_id': user[0], 'exp': datetime.now() + timedelta(hours=1)},
             SECRET_KEY,
             algorithm="HS256"
         )

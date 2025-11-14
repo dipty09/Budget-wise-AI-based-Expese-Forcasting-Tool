@@ -474,52 +474,14 @@ These improvements position the platform for enterprise-grade adoption and enhan
 
 ---
 ## **System WorkFlow:-**
-<pre>
-┌────────────────────┐
-│      User UI       │
-│ (Login/Register)   │
-└─────────┬──────────┘
-          │
-          ▼
-┌────────────────────────┐
-│ Application Logic Layer │
-│ (Validation + Routing)  │
-└─────────┬──────────────┘
-          │
-          ▼
-┌─────────────────────────┐
-│     Database Layer      │
-│ (Store/Retrieve User    │
-│   & Expense Records)    │
-└─────────┬──────────────┘
-          │
-          ▼
-┌─────────────────────────┐
-│   Admin Dashboard UI    │
-│ (Monitoring & Analytics)│
-└─────────────────────────┘
-</pre>
+
+  ![DataFlow Diagram](docs/Screenshots/Dataflow.png)
+
 ### **Data Flow Digarm:-**
 ## **Level-0:-**
-<pre>
-          ┌─────────────────────┐
-          │       User          │
-          └───────┬─────────────┘
-                  │ 1. Inputs (Income, Expense, Category)
-                  ▼
-        ┌────────────────────────────┐
-        │ AI-Based Budget Forecasting│
-        │        Application         │
-        └───────┬─────────────┬──────┘
-                │             │
-      2. Forecast Insights     │ 3. System Reports / Logs
-                │             │
-                ▼             ▼
-          ┌───────────┐  ┌─────────────┐
-          │   User     │  │   Admin     │
-          │ Dashboard  │  │ Dashboard   │
-          └───────────┘  └─────────────┘
-</pre>
+
+  ![Level0-Diagram](docs/Screenshots/Level0.png)
+
 ## **Level-1:-**
 <pre>
                          ┌───────────────────────────────┐

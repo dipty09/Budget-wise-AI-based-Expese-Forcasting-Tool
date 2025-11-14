@@ -6,11 +6,13 @@ import plotly.graph_objects as go
 import os
 from prophet import Prophet
 from datetime import datetime
+from dotenv import load_dotenv
 
+load_dotenv()
 st.set_page_config(page_title="BudgetWise — Advanced Dashboard", layout="wide")
 st.title("BudgetWise — Advanced Financial Dashboard")
 
-MASTER_CSV = os.path.join("ml", "data", "budgetwise_transactions.csv")
+MASTER_CSV = os.getenv("MASTER_CSV_PATH")
 
 # Load data
 uploaded = st.sidebar.file_uploader("Upload master CSV (optional)", type=["csv"])

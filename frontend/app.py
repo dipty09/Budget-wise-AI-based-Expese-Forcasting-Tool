@@ -27,7 +27,7 @@ def auto_categorize(text):
         "Transportation": ["bus", "train", "uber", "ola", "fuel", "petrol", "diesel", "ticket"],
         "Shopping": ["shopping", "mall", "clothes", "apparel", "store", "purchase"],
         "Utilities": ["electricity", "water", "gas", "internet", "mobile", "recharge", "bill"],
-        "Health & Fitness": ["hospital", "medicine", "doctor", "gym", "pharmacy"],
+        "Health & Fitness": ["hospital", "medicine", "doctor", "gym", "pharmacy","Health"],
         "Entertainment": ["movie", "netflix", "amazon", "music", "game", "subscription"],
         "Education": ["school", "college", "course", "exam", "fee", "book"],
         "Salary / Income": ["salary", "income", "credit", "bonus", "deposit"],
